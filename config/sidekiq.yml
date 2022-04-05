@@ -6,6 +6,8 @@
   - mailers
   - newsletter
   - events
+  - user_report
+  - block_user
   - scheduled
 
 :schedule:
@@ -25,4 +27,7 @@
     cron: '0 0 4 * * *' # Run at 04:00
     class: BackupJob
     queue: backups
-
+  DetectSpamUsers:
+    cron: '0 0 8 * * *' # Run at 08:00
+    class: Decidim::SpamDetection::MarkUsersJob
+    queue: scheduled
